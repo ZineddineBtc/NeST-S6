@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nest-s6"
+version = "0.1.0"
+description = "NeST-S6: Nested spatiotemporal PDE-aware selective state-space model for forecasting"
+readme = "README.md"
+authors = [
+    { name = "Zineddine Bettouche", email = "zineddine.bettouche@th-deg.de" }
+]
+license = { text = "MIT" }
+requires-python = ">=3.8"
+dependencies = [
+    "torch>=2.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["nest_s6*"]

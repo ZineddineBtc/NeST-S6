@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+setup.cfg
+nest_s6/__init__.py
+nest_s6/__version__.py
+nest_s6/model.py
+nest_s6.egg-info/PKG-INFO
+nest_s6.egg-info/SOURCES.txt
+nest_s6.egg-info/dependency_links.txt
+nest_s6.egg-info/requires.txt
+nest_s6.egg-info/top_level.txt
