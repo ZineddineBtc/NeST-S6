@@ -21,8 +21,8 @@ It integrates a **fast per-step spatiotemporal predictor** (convolution + window
 
 ## Problem Formulation (Kernel / Patch Forecasting)
 
-Let \(M = \{M_1, M_2, \ldots, M_T\}\) be a sequence of traffic grids where each \(M_t \in \mathbb{R}^{H \times W}\).
-For each spatial position \((i, j)\), we extract a spatiotemporal input kernel:
+Let $M = \{M_1, M_2, \ldots, M_T\}$ be a sequence of traffic grids where each $M_t \in \mathbb{R}^{H \times W}$.
+For each spatial position $(i, j)$, we extract a spatiotemporal input kernel:
 
 $$
 X^{(i,j)} \in \mathbb{R}^{T \times K \times K}
@@ -35,7 +35,7 @@ Y^{(i,j)} = M_{t+1}[i-r : i+r,\; j-r : j+r] \in \mathbb{R}^{K \times K},
 \quad r=(K-1)/2
 $$
 
-We learn parameters \(\theta\) by minimizing a forecasting loss:
+We learn parameters $\theta$ by minimizing a forecasting loss:
 
 $$
 \min_{\theta} \; L\big(f_{\theta}(X^{(i,j)}),\, Y^{(i,j)}\big)
@@ -47,7 +47,7 @@ $$
 
 ### 1. Fast Learner (per-step spatiotemporal dynamics)
 
-At each step \(t\), NeST-S6 builds a 2-channel input from the current frame and its temporal difference:
+At each step $t$, NeST-S6 builds a 2-channel input from the current frame and its temporal difference:
 
 $$
 \mathbf{u}_t = \text{concat}(\mathbf{x}_t,\, \mathbf{x}_t - \mathbf{x}_{t-1})
@@ -61,7 +61,7 @@ This is projected into a latent context and processed by a stack of NeST-S6 bloc
 
 ### 2. Slow Learner (persistent memory + Deep Optimizer)
 
-NeST-S6 maintains a long-term spatial memory \(\mathbf{M}_t\) updated by a learned optimizer.
+NeST-S6 maintains a long-term spatial memory $\mathbf{M}_t$ updated by a learned optimizer.
 A **surprise signal** (prediction error projected into latent space) drives memory writes; otherwise memory decays smoothly.
 
 ### 3. Memory Injection (context gate)
