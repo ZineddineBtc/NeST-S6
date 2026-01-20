@@ -1,6 +1,6 @@
 # NeST-S6: Nested Convolutional Spatiotemporal (PDE-aware) State-space Model for 5G Network Traffic Forecasting
 
-NeST-S6 (“Nest S 6”) is a **nested-learning spatiotemporal forecasting model** designed for **grid-based cellular traffic prediction**.
+NeST-S6 (“Nest S 6”) is a **nested-learning spatiotemporal forecasting model** designed for **grid-based cellular traffic prediction**, inspired in part by Google Research’s *Nested Learning* paradigm ([arXiv:2512.24695](https://arxiv.org/abs/2512.24695), [blog post](https://research.google/blog/introducing-nested-learning-a-new-ml-paradigm-for-continual-learning/)).
 It integrates a **fast per-step spatiotemporal predictor** (convolution + windowed 2D attention + **PDE-aware selective state-space updates**) with a **slow persistent memory** updated by a learned **Deep Optimizer**.
 
 <p align="center">
@@ -11,7 +11,9 @@ It integrates a **fast per-step spatiotemporal predictor** (convolution + window
 
 ## Key Features
 
-- **Nested Learning Memory**: A slow, persistent spatial memory improves robustness under **global/dynamic drift**.
+- **Nested Learning Memory**: A slow, persistent spatial memory improves robustness under **global/dynamic drift**, inspired by *“Nested Learning: The Illusion of Deep Learning Architectures”* ([paper](https://arxiv.org/abs/2512.24695), [blog post](https://research.google/blog/introducing-nested-learning-a-new-ml-paradigm-for-continual-learning/)).
+
+
 - **PDE-aware SSM Core**: Spatially-varying selective state-space updates with stable exponential discretization.
 - **Local Mixing + Windowed Attention**: Depthwise convolution and windowed attention for efficient 2D context.
 - **End-to-end Grid Forecasting**: Predict full spatial kernels/patches at once (instead of scalar-per-pixel).
@@ -258,6 +260,8 @@ with torch.no_grad():
 
 ## Training: Nested Memory
 
+
+
 What’s *special* about NeST-S6 training is the **nested memory loop**:
 
 - **Fast learner**: predicts the next frame $\hat{\mathbf{x}}_{t+1}$ from recent history.
@@ -308,6 +312,7 @@ If you use NeST-S6 in your research, please cite the (pending-review) paper and/
   year   = {2026},
   url    = {https://github.com/ZineddineBtc/NeST-S6},
 }
+
 ```
 
 ---
